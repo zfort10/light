@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ON/OFF Lightbulb</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f0f0;
+    }
+    #toggleButton {
+      padding: 20px 40px;
+      font-size: 24px;
+      background-color: green;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-bottom: 30px;
+    }
+    .off {
+      background-color: red;
+    }
+    #bulb {
+      width: 150px;
+      height: 150px;
+      transition: filter 0.3s ease;
+    }
+    .off-bulb {
+      filter: grayscale(100%) brightness(0.5);
+    }
+  </style>
+</head>
+<body>
+
+  <button id="toggleButton">ON</button>
+  <img id="bulb" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Light_bulb_icon.svg/1200px-Light_bulb_icon.svg.png" alt="Lightbulb" />
+
+  <script>
+    const button = document.getElementById('toggleButton');
+    const bulb = document.getElementById('bulb');
+    let isOn = true;
+
+    button.addEventListener('click', () => {
+      isOn = !isOn;
+      button.textContent = isOn ? 'ON' : 'OFF';
+      button.classList.toggle('off');
+
+      if (isOn) {
+        bulb.classList.remove('off-bulb');
+      } else {
+        bulb.classList.add('off-bulb');
+      }
+    });
+  </script>
+  
+</body>
+</html>
